@@ -1,0 +1,21 @@
+{
+  "name": "management-patrimony",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build-style": "sass assets/styles/app.scss public/assets/styles/app.css",
+    "build-style-watch": "sass assets/styles/app.scss public/assets/styles/app.css --watch",
+    "build-script": "uglifyjs assets/scripts/* -o public/assets/scripts/dist.js",
+    "prod": "uglifyjs assets/scripts/* --compress -m --mangle-props -o public/assets/scripts/dist.js && sass assets/styles/app.scss public/assets/styles/app.css"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "vue": "^2.6.12",
+    "vue-resource": "^1.5.2"
+  }
+}

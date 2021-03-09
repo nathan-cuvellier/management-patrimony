@@ -1,6 +1,29 @@
-.animation {
+.animate {
     animation-duration: 1s;
     animation-fill-mode: both;
+}
+
+.animateDuration_2s {
+    animation-duration: 2s;
+}
+
+.animate.animateInfinite {
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+}
+
+@keyframes slideInDown {
+    from {
+        transform: translate3d(0, -50%, 0);
+        visibility: visible;
+    }
+
+    to {
+        transform: translate3d(0, 0, 0);
+    }
+}
+.animateSlideInDown {
+    animation-name: slideInDown;
 }
 
 @keyframes navLinkFade {

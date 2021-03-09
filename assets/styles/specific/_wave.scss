@@ -1,0 +1,8 @@
+img.wave {
+    z-index: -1;
+    position: absolute;
+    width: 100%;
+    object-fit: cover;
+    min-height: 50vh;
+    top: -2px; // white pixel on img
+}

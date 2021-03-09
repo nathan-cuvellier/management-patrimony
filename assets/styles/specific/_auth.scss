@@ -1,0 +1,22 @@
+.wave {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.auth {
+    transition: all .3s;
+    margin-top: 120px;
+
+    @include media('>sm-desktop') {
+        margin-top: 230px;
+    }
+
+    form {
+        border-radius: $border-radius-size;
+        background-color: #FFFFFF;
+        width: 350px;
+        box-shadow: 0 0 40px 0 rgba(0,0,0,0.5);
+    }
+
+}

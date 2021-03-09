@@ -8865,5 +8865,13 @@ nav.nav-active .nav-links {
     width: 300px;
   }
 }
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  min-height: 50px;
+  color: white;
+}
 
 /*# sourceMappingURL=app.css.map */

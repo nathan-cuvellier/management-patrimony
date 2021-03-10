@@ -1,13 +1,15 @@
 const express = require("express")
 const bodyParser = require('body-parser')
-const helmet = require("helmet");
+const sqlite3 = require('sqlite3')
 const app = express()
-app.use(helmet());
 app.use(express.static('public'));
 let authentificationRouter = require('./routes/authentification');
-let homeRouter = require('./routes/home');
+let categoryRouter = require('./routes/category');
+
+db = new sqlite3.Database('data.db');
 
 app.use("/public/assets", express.static(__dirname + "/public/assets"))
+app.use("/public/img", express.static(__dirname + "/public/img"))
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -20,10 +22,70 @@ app.use(bodyParser.json())
 
 app.use('/login', authentificationRouter)
 
-/*
-app.get("/", (req, res) => {
-    res.sendFile(__dirname + "/public/index.html")
-})*/
+
+/*********************************/
+/*            category           */
+/*********************************/
+
+app.use('/category', categoryRouter)
 
 
-app.listen(8080)
+app.get('/create-db', ((req, res) => {
+    db.run('DROP TABLE IF EXISTS place')
+    db.run('DROP TABLE IF EXISTS category')
+
+    db.run(`
+        CREATE TABLE IF NOT EXISTS place
+        (
+            id          integer PRIMARY KEY AUTOINCREMENT,
+            name        varchar,
+            latitude    float,
+            longitude   float,
+            difficulty  integer,
+            radius_type varchar,
+            category_id integer
+        );
+    `);
+
+    db.run(`
+        CREATE TABLE IF NOT EXISTS category
+        (
+            id   integer PRIMARY KEY AUTOINCREMENT,
+            name varchar
+        );
+    `);
+
+
+    res.send("Done");
+}))
+
+app.get('/data-test', ((req, res) => {
+    db.run('DELETE FROM `place`')
+    db.run('DELETE FROM `category`')
+    db.run('INSERT INTO category (name) VALUES (\'Lac\');')
+    db.run('INSERT INTO category (name) VALUES (\'Magasin\');')
+    db.run('INSERT INTO category (name) VALUES (\'Marché\');')
+    db.run('INSERT INTO category (name) VALUES (\'Pont\');')
+    db.run('INSERT INTO category (name) VALUES (\'Église\');')
+    db.run('INSERT INTO category (name) VALUES (\'Prison\');')
+    db.run('INSERT INTO category (name) VALUES (\'Fontaine\');')
+    db.run('INSERT INTO category (name) VALUES (\'Rivière\');')
+
+    res.send("Done");
+}))
+
+
+app.get('/categories', ((req, res) => {
+
+    db.all('SELECT * FROM `category`;', function(err, allRows) {
+        if(err != null){
+            console.log(err);
+        }
+
+        res.json(allRows);
+    })
+
+}))
+
+
+app.listen(8081)

@@ -4,7 +4,6 @@ const path = require('path');
 
 router.get('/', (req, res) => {
     res.sendFile(path.resolve('public/index.html'))
-    console.log('aze')
 })
 
 module.exports = router;

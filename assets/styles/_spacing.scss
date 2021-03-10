@@ -407,10 +407,10 @@
     }
 
     @include media('>md-desktop') {
-        @include margin-x(120px);
+        @include margin-x(150px);
     }
 
     @include media('>lg-desktop') {
-        @include margin-x(270px);
+        @include margin-x(370px);
     }
 }

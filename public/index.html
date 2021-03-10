@@ -19,16 +19,27 @@
     <ul class="nav-links">
         <li><a href=""><i class="lar la-2x la-user"></i>Se connecter</a></li>
         <li><a href=""><i class="las la-2x la-church"></i>Gestion de patrimoines</a></li>
-<!--        <li><a href=""><i class="las la-2x la-route"></i>Gestion d'itineraires</a></li>-->
+        <!--        <li><a href=""><i class="las la-2x la-route"></i>Gestion d'itineraires</a></li>-->
         <li><a href="">A propos</a></li>
         <li><a href="">Mentions légals</a></li>
     </ul>
 </nav>
-<div class="content">
+<div id="app" class="content container">
 
+    <button class="btn cursor-pointer my-5" @click="addCategory"><i class="las la-plus"></i> Ajouter une catégorie</button>
+    <div class="categories" @click="handleRemoveCategory" v-on:keyup="editCategory">
+        <div :id=category.id class="position-relative category" v-for="category of categories">
+            <i class="remove-category trash-category las la-2x la-trash cursor-pointer" title="supprimer"></i>
+            <p class="edit-category" contenteditable="true">{{ category.name }}</p>
+        </div>
+    </div>
 </div>
 <footer>
     <p>Management patrimony &copy; 2021</p>
 </footer>
+
+<script src="/assets/scripts/vue.js"></script>
+<script src="/assets/scripts/vue-resource.js"></script>
+<script src="/assets/scripts/category.js"></script>
 </body>
 </html>

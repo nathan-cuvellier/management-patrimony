@@ -10,7 +10,7 @@ const app = new Vue({
                 document.querySelector('.categories').innerHTML += `
                     <div id="${id}" class="position-relative">
                         <i class="remove-category trash-category las la-2x la-trash cursor-pointer" title="supprimer"></i>
-                        <p v-on:key="test" contenteditable="true">new</p>
+                        <p v-on:key="test" class="edit-category" contenteditable="true">new</p>
                     </div>
                 `
             })

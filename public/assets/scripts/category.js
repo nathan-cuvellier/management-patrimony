@@ -7,12 +7,12 @@ const app = new Vue({
         addCategory: function() {
             this.$http.get('/category/add').then(function(response) {
                 let id = response.bodyText
-                document.querySelector('.categories').innerHTML += `
+                document.querySelector('.categories > div:first-child').insertAdjacentHTML('beforebegin', `
                     <div id="${id}" class="position-relative">
                         <i class="remove-category trash-category las la-2x la-trash cursor-pointer" title="supprimer"></i>
                         <p v-on:key="test" class="edit-category" contenteditable="true">new</p>
                     </div>
-                `
+                `)
             })
 
         },

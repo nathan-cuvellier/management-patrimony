@@ -77,7 +77,7 @@ app.get('/data-test', ((req, res) => {
 
 app.get('/categories', ((req, res) => {
 
-    db.all('SELECT * FROM `category`;', function(err, allRows) {
+    db.all('SELECT * FROM `category` ORDER BY id DESC;', function(err, allRows) {
         if(err != null){
             console.log(err);
         }

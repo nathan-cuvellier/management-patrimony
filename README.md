@@ -29,6 +29,6 @@ Création des données pour SQLite
 
 ![](https://nathan-cuvellier.fr/img/js_damas/category.png)
 
-### Bare de navigation pour les petits écrans
+### Barre de navigation pour les petits écrans
 
 ![](https://nathan-cuvellier.fr/img/js_damas/m_menu.png)

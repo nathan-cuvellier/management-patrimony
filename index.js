@@ -3,6 +3,7 @@ const bodyParser = require('body-parser')
 const sqlite3 = require('sqlite3')
 const app = express()
 app.use(express.static('public'));
+let layoutRouter = require('./routes/layout');
 let authentificationRouter = require('./routes/authentification');
 let categoryRouter = require('./routes/category');
 
@@ -17,14 +18,21 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 /*********************************/
-/*        authentification       */
+/*        Authentification       */
 /*********************************/
 
 app.use('/login', authentificationRouter)
 
 
 /*********************************/
-/*            category           */
+/*            Category           */
+/*********************************/
+
+app.use('/layout', layoutRouter)
+
+
+/*********************************/
+/*            Layout           */
 /*********************************/
 
 app.use('/category', categoryRouter)

@@ -10,7 +10,7 @@ const app = new Vue({
                 document.querySelector('.categories > div:first-child').insertAdjacentHTML('beforebegin', `
                     <div id="${id}" class="position-relative">
                         <i class="remove-category trash-category las la-2x la-trash cursor-pointer" title="supprimer"></i>
-                        <p v-on:key="test" class="edit-category" contenteditable="true">new</p>
+                        <p v-on:key="test" class="edit-category" contenteditable="true">new ${id}</p>
                     </div>
                 `)
             })
@@ -57,6 +57,18 @@ const app = new Vue({
         this.$http.get('/categories').then(function (response)
         {
             this.categories = response.data
+        })
+
+        this.$http.get('/layout/head').then(function (response)
+        {
+            document.querySelector('head').insertAdjacentHTML('afterbegin', response.data)
+            buildNewBar()
+        })
+
+        this.$http.get('/layout/navbar').then(function (response)
+        {
+            document.body.insertAdjacentHTML('afterbegin', response.data)
+            buildNewBar()
         })
 
     }

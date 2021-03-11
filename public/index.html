@@ -1,31 +1,11 @@
 <!doctype html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Gestion du patrimoine</title>
-    <link rel="stylesheet" href="/public/assets/styles/app.css">
-    <script src="/public/assets/scripts/dist.js" defer></script>
 </head>
 <body>
-<div class="menu-burger">
-    <div class="line1"></div>
-    <div class="line2"></div>
-    <div class="line3"></div>
-</div>
-<nav>
-    <ul class="nav-links">
-        <li><a href=""><i class="lar la-2x la-user"></i>Se connecter</a></li>
-        <li><a href=""><i class="las la-2x la-church"></i>Gestion de patrimoines</a></li>
-        <!--        <li><a href=""><i class="las la-2x la-route"></i>Gestion d'itineraires</a></li>-->
-        <li><a href="">A propos</a></li>
-        <li><a href="">Mentions légals</a></li>
-    </ul>
-</nav>
-<div id="app" class="content container">
 
+<div id="app" class="content container">
     <button class="btn cursor-pointer my-5" @click="addCategory"><i class="las la-plus"></i> Ajouter une catégorie</button>
     <div class="categories" @click="handleRemoveCategory" v-on:keyup="editCategory">
         <div :id=category.id class="position-relative category" v-for="category of categories">
@@ -38,6 +18,8 @@
     <p>Management patrimony &copy; 2021</p>
 </footer>
 
+
+<script src="/public/assets/scripts/dist.js"></script>
 <script src="/assets/scripts/vue.js"></script>
 <script src="/assets/scripts/vue-resource.js"></script>
 <script src="/assets/scripts/category.js"></script>

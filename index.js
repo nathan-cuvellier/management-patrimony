@@ -50,7 +50,6 @@ app.get('/create-db', ((req, res) => {
             latitude    float,
             longitude   float,
             difficulty  integer,
-            radius_type varchar,
             category_id integer
         );
     `);

@@ -11,4 +11,8 @@ router.get('/navbar', (req, res) => {
     res.sendFile(path.resolve('public/layout/navbar.html'))
 })
 
+router.get('/footer', (req, res) => {
+    res.sendFile(path.resolve('public/layout/footer.html'))
+})
+
 module.exports = router;

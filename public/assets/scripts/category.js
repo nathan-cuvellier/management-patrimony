@@ -70,5 +70,10 @@ const app = new Vue({
             buildNewBar()
         })
 
+        this.$http.get('/layout/footer').then(function (response)
+        {
+            document.body.insertAdjacentHTML('beforeend', response.data)
+        })
+
     }
 })

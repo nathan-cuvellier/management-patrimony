@@ -4,6 +4,7 @@ Le but de se site est de permettre aux offices de tourismes de pouvoir gérer de
 
 *Le site final sera fait en symfony, vous retrouverez une petite partie du développement en NodeJS*
 
+Le site a été pensé en **MOBILE FIRST**
 
 ## Getting started
 Creation des tables pour le SQLite
@@ -21,3 +22,13 @@ Création des données pour SQLite
 ```text
 /data-test
 ```
+
+# Screenshots
+
+### Catégories
+
+![](https://nathan-cuvellier.fr/img/js_damas/category.png)
+
+### Bare de navigation pour les petits écrans
+
+![](https://nathan-cuvellier.fr/img/js_damas/m_menu.png)

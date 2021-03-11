@@ -83,7 +83,7 @@ app.get('/data-test', ((req, res) => {
 }))
 
 
-app.get('/categories', ((req, res) => {
+app.get('/categories-list', ((req, res) => {
 
     db.all('SELECT * FROM `category` ORDER BY id DESC;', function(err, allRows) {
         if(err != null){

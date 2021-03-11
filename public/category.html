@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <title>Gestion du patrimoine</title>
+</head>
+<body>
+
+<div id="app" class="content container">
+    <button class="btn cursor-pointer my-5" @click="addCategory"><i class="las la-plus"></i> Ajouter une catégorie</button>
+    <div class="categories" @click="handleRemoveCategory" v-on:keyup="editCategory">
+        <div :id=category.id class="position-relative category" v-for="category of categories">
+            <i class="remove-category trash-category las la-2x la-trash cursor-pointer" title="supprimer"></i>
+            <p class="edit-category" contenteditable="true">{{ category.name }}</p>
+        </div>
+    </div>
+</div>
+
+
+<footer>
+    <p>Management patrimony &copy; 2021</p>
+</footer>
+
+
+<script src="/public/assets/scripts/dist.js"></script>
+<script src="/assets/scripts/vue.js"></script>
+<script src="/assets/scripts/vue-resource.js"></script>
+<script src="/assets/scripts/category.js"></script>
+</body>
+</html>

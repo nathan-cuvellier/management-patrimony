@@ -6,6 +6,10 @@ router.use(bodyParser.urlencoded({ extended: false }))
 const sqlite3 = require('sqlite3');
 db = new sqlite3.Database('data.db');
 
+router.get('/', (req, res) => {
+    res.sendFile(path.resolve('public/category.html'))
+})
+
 router.get('/add', (req, res) => {
 
     db.run("INSERT INTO category (name) VALUES ('new')")

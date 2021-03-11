@@ -3,7 +3,7 @@ const router = express.Router();
 const path = require('path');
 
 router.get('/', (req, res) => {
-    res.sendFile(path.resolve('public/authentification/login.html'))
+    res.sendFile(path.resolve('public/authentification.html'))
 })
 
 module.exports = router;

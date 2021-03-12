@@ -6,6 +6,7 @@ app.use(express.static('public'));
 let layoutRouter = require('./routes/layout');
 let authentificationRouter = require('./routes/authentification');
 let categoryRouter = require('./routes/category');
+let placeRouter = require('./routes/place');
 
 db = new sqlite3.Database('data.db');
 
@@ -37,8 +38,14 @@ app.use('/layout', layoutRouter)
 
 app.use('/category', categoryRouter)
 
+/*********************************/
+/*            place           */
+/*********************************/
 
-app.get('/create-db', ((req, res) => {
+app.use('/place', placeRouter)
+
+
+app.get('/create-db', (req, res) => {
     db.run('DROP TABLE IF EXISTS place')
     db.run('DROP TABLE IF EXISTS category')
 
@@ -49,7 +56,6 @@ app.get('/create-db', ((req, res) => {
             name        varchar,
             latitude    float,
             longitude   float,
-            difficulty  integer,
             category_id integer
         );
     `);
@@ -64,9 +70,9 @@ app.get('/create-db', ((req, res) => {
 
 
     res.send("Done");
-}))
+})
 
-app.get('/data-test', ((req, res) => {
+app.get('/data-test', (req, res) => {
     db.run('DELETE FROM `place`')
     db.run('DELETE FROM `category`')
     db.run('INSERT INTO category (name) VALUES (\'Lac\');')
@@ -79,10 +85,10 @@ app.get('/data-test', ((req, res) => {
     db.run('INSERT INTO category (name) VALUES (\'Rivière\');')
 
     res.send("Done");
-}))
+})
 
 
-app.get('/categories-list', ((req, res) => {
+app.get('/categories-list', (req, res) => {
 
     db.all('SELECT * FROM `category` ORDER BY id DESC;', function(err, allRows) {
         if(err != null){
@@ -92,7 +98,7 @@ app.get('/categories-list', ((req, res) => {
         res.json(allRows);
     })
 
-}))
+})
 
 
 app.listen(8081)

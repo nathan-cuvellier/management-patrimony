@@ -7,7 +7,7 @@ const sqlite3 = require('sqlite3');
 db = new sqlite3.Database('data.db');
 
 router.get('/', (req, res) => {
-    res.sendFile(path.resolve('public/category.html'))
+    res.sendFile(path.resolve('public/view/category.html'))
 })
 
 router.get('/add', (req, res) => {

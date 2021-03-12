@@ -7,7 +7,7 @@ const sqlite3 = require('sqlite3');
 db = new sqlite3.Database('data.db');
 
 router.get('/', (req, res) => {
-    res.sendFile(path.resolve('public/place/index.html'))
+    res.sendFile(path.resolve('public/view/place/index.html'))
 })
 
 router.get('/add', (req, res) => {

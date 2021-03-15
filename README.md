@@ -27,8 +27,12 @@ Création des données pour SQLite
 
 ### Catégories
 
-![](https://nathan-cuvellier.fr/img/js_damas/category.png)
+![Catégorie](https://nathan-cuvellier.fr/img/js_damas/category.png)
 
 ### Barre de navigation pour les petits écrans
 
-![](https://nathan-cuvellier.fr/img/js_damas/m_menu.png)
+![Menu](https://nathan-cuvellier.fr/img/js_damas/m_menu.png)
+
+### Gestion des erreurs
+
+![Erreur exemple](https://nathan-cuvellier.fr/img/js_damas/error_foreign_key.png)

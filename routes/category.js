@@ -23,10 +23,27 @@ router.get('/delete/:id', (req, res) => {
     let id = req.params.id
     if(isNaN(id)) return res.json('error id is not a integer')
 
-    let prepare = db.prepare("DELETE FROM category WHERE id = ?")
+    let nameCategories = []
+    let countForeignKey = new Promise((resolve, reject) => {
+        db.all('SELECT name FROM place WHERE category_id = ?', id, (err, result) => {
+            result.forEach(e => {
+                nameCategories.push(e.name)
+            })
+            resolve(nameCategories)
+        })
+    })
 
-    prepare.run(id)
-    res.send("ok")
+    countForeignKey.then(value => {
+        if(value.length > 0) {
+            res.json(nameCategories)
+            return
+        }
+        let prepare = db.prepare("DELETE FROM category WHERE id = ?")
+
+        prepare.run(id)
+        res.send("ok")
+    })
+    
 })
 
 router.post('/update/:id', (req, res) => {

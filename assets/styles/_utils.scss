@@ -43,11 +43,20 @@
 }
 
 .bg-danger {
-    padding: 10px 20px;
     background-color: $error;
     color: $white;
 }
 
 .text-error {
     color: $error;
+}
+
+.error-popup {
+    z-index: $z-index-modal;
+    position: fixed;
+    padding: 10px 20px;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 400px;
 }

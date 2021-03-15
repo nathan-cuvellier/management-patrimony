@@ -36,6 +36,19 @@ const app = new Vue({
                 let categories = JSON.parse(JSON.stringify(this.categories))
 
                 this.$http.get('/category/delete/' + idCat).then((response) => {
+                    if(typeof response.body === 'object') {
+                        let msgError = '<div class="error-popup bg-danger">Erreur, la catégorie est utilisé par les monuments suivants :<br><br><ul>';
+                        
+                        response.body.forEach((e) => {
+                            msgError += '<li>' + e + '</li>'
+                        })
+                        document.body.insertAdjacentHTML('afterbegin', msgError + '</ul></div>')
+
+                        setTimeout(() => {
+                            document.querySelector('.error-popup').remove()
+                        }, 5000)
+                        return
+                    }
                     if(response.bodyText !== 'ok') {
                         alert('Error lors de la suppression')
                         return false

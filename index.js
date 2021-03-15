@@ -4,6 +4,7 @@ const sqlite3 = require('sqlite3')
 const app = express()
 app.use(express.static('public'));
 let layoutRouter = require('./routes/layout');
+let homeRouter = require('./routes/home');
 let authentificationRouter = require('./routes/authentification');
 let categoryRouter = require('./routes/category');
 let placeRouter = require('./routes/place');
@@ -17,6 +18,8 @@ app.use("/public/img", express.static(__dirname + "/public/img"))
 app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 app.use(bodyParser.json())
+
+app.use('/', homeRouter)
 
 /*********************************/
 /*        Authentification       */

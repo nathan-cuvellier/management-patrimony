@@ -54,10 +54,7 @@ const app = new Vue({
                         return false
                     }
                     let index = categories.findIndex(x => x.id === parseInt(idCat))
-                    /*
-                    console.log(index)
-                    delete this.categories[index]
-                    console.log(this.categories)*/
+                    
                     event.target.parentNode.remove()
                 })
             }

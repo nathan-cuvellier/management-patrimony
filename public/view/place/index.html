@@ -6,13 +6,47 @@
 <body>
 
 <div id="app" class="content container">
-    <button class="btn cursor-pointer my-5"><i class="las la-plus"></i> Ajouter un monument</button>
+    <button class="btn cursor-pointer my-5" @click="newCategoryModal"><i class="las la-plus"></i> Ajouter un monument</button>
     <div class="places" @click="handleRemovePlace">
         <div :id=place.id class="position-relative place" v-for="place of places">
             <i class="icon-edit-place las la-2x la-pen cursor-pointer" title="supprimer"></i>
             <i class="remove-place trash-place las la-2x la-trash cursor-pointer" title="supprimer"></i>
-            <p class="edit-place" contenteditable="true">{{ place.name }}</p>
+            <p class="edit-place">{{ place.name }}</p>
         </div>
+    </div>
+
+    <div class="modal d-none">
+        <form>
+            <input type="hidden" value="new" class="method">
+            <div>
+                <label for="name">Nom</label>
+                <input type="text" id="name" class="form-control" v-model="place.name">
+            </div>
+            <div>
+                <label for="latitude">latitude</label>
+                <input type="text" id="latitude" class="form-control" v-model="place.latitude">
+            </div>
+            <div>
+                <label for="longitude">longitude</label>
+                <input type="text" id="longitude" class="form-control" v-model="place.longitude">
+            </div>
+    
+            <div>
+                <label for="categorie">Catégorie</label>
+                <select name="" id="category" class="form-control" v-model="place.categorie">
+                    <option value="">...</option>
+                    <option :value="category.id" v-for="category of categories">
+                        {{ category.name }}
+                    </option>
+                </select>
+            </div>
+            
+        
+            <div>
+                <input @click="closeModal" type="submit" id="closeMode" class="btn bg-danger cursor-pointer" value="Annuler">
+                <input @click="sendPlace" type="submit" id="confirm" class="btn cursor-pointer" value="Valider">
+            </div>
+        </form>
     </div>
 </div>
 

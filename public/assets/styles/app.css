@@ -9403,6 +9403,37 @@ footer {
   max-width: 400px;
 }
 
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.modal form {
+  overflow-y: auto;
+  background-color: #FFFFFF;
+  padding: 20px 30px;
+  width: 400px;
+  max-width: 100%;
+}
+.modal form > div {
+  margin: 10px 0;
+}
+.modal form label {
+  display: block;
+}
+.modal form .error {
+  padding: 10px 20px;
+}
+
 form label {
   text-transform: uppercase;
   font-size: 13px;

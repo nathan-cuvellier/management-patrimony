@@ -7,16 +7,16 @@
 
 <div id="app" class="content container">
     <button class="btn cursor-pointer my-5" @click="newCategoryModal"><i class="las la-plus"></i> Ajouter un monument</button>
-    <div class="places" @click="handleRemovePlace">
-        <div :id=place.id class="position-relative place" v-for="place of places">
-            <i class="icon-edit-place las la-2x la-pen cursor-pointer" title="supprimer"></i>
+    <div class="places" @click="handlePlace">
+        <div :id="'place-'+place.id" :data-id=place.id class="position-relative place" v-for="place of places">
+            <i class="icon-edit-place las la-2x la-pen cursor-pointer" title="editer"></i>
             <i class="remove-place trash-place las la-2x la-trash cursor-pointer" title="supprimer"></i>
             <p class="edit-place">{{ place.name }}</p>
         </div>
     </div>
 
     <div class="modal d-none">
-        <form>
+        <form :data-id="place.id">
             <input type="hidden" value="new" class="method">
             <div>
                 <label for="name">Nom</label>
@@ -32,8 +32,8 @@
             </div>
     
             <div>
-                <label for="categorie">Catégorie</label>
-                <select name="" id="category" class="form-control" v-model="place.categorie">
+                <label for="category">Catégorie</label>
+                <select name="" id="category" class="form-control" v-model="place.category_id">
                     <option value="">...</option>
                     <option :value="category.id" v-for="category of categories">
                         {{ category.name }}

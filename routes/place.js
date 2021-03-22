@@ -41,6 +41,21 @@ router.post('/add', (req, res) => {
     })
 })
 
+router.get('/read/:id', (req, res) => {
+    let id = req.params.id
+    if(isNaN(id)) return res.json('error id is not a integer')
+
+    db.get("SELECT * FROM place WHERE id = ?", id, function(err, row) {
+        if(err) return console.log(err.message);
+
+        if(undefined === row) {
+            return res.status(404).send('not found')
+        }
+
+        return res.send(row)
+    })
+})
+
 router.get('/delete/:id', (req, res) => {
     let id = req.params.id
     if(isNaN(id)) return res.json('error id is not a integer')
@@ -55,10 +70,29 @@ router.post('/update/:id', (req, res) => {
     let id = req.params.id
     if(isNaN(id)) return res.json('error id is not a integer')
 
-    let prepare = db.prepare("UPDATE category SET name = ? WHERE id = ?")
+    let body = req.body
 
-    prepare.run(req.body.text, id)
-    res.send("ok")
+    let idPlace = parseInt(body.id)
+    let latitude = parseFloat(body.latitude)
+    let longitude = parseFloat(body.longitude)
+    let category_id = parseInt(body.category)
+
+    console.log("name : " + body.name)
+    console.log("latitude : " + latitude)
+    console.log("longitude : " + longitude)
+    console.log("category_id : " + category_id)
+    console.log("idPlace : " + idPlace)
+    db.run("UPDATE place SET name = ?, latitude = ?,longitude = ? ,category_id = ? WHERE id = ?",
+        [body.name, latitude, longitude, category_id, idPlace], function(err) {
+                if (err) {
+                    return console.log(err.message);
+                }
+
+            res.send("ok 2")
+
+            }
+        )
+
 })
 
 router.get('/list', (req, res) => {

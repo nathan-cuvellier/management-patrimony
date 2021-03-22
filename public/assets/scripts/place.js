@@ -8,21 +8,32 @@ const app = new Vue({
     methods: {
         initForm: function() {
             this.place = {
+                id: 0,
                 name: '',
                 latitude: '',
                 longitude: '',
-                category: ''
+                category_id: ''
             }
 
             document.querySelector('form .method').setAttribute('value', 'new')
         },
 
         newCategoryModal: function() {
+            this.initForm()
+            let modal = document.querySelector('.modal')
+
+            let form = modal.querySelector('form')
+
+            let method = form.querySelector('.method')
+
+            method.setAttribute('value', 'new')
+            this.showCategoryModal()
+        },
+
+        showCategoryModal: function() {
             let modal = document.querySelector('.modal')
 
             modal.classList.remove('d-none')
-
-
         },
 
         sendPlace: function(event){
@@ -48,18 +59,15 @@ const app = new Vue({
                     longitude: longitude,
                     category: category
                 }).then(function(response) {
-                    console.log(response)
-
                     document.querySelector('.places').insertAdjacentHTML('afterbegin', `
-                    <div id="${response.bodyText}" class="position-relative place">
+                    <div id="${response.bodyText}" data-id="${response.bodyText}" class="position-relative place">
+                        <i class="icon-edit-place las la-2x la-pen cursor-pointer" title="editer"></i>
                         <i title="supprimer" class="remove-place trash-place las la-2x la-trash cursor-pointer"></i>
                         <p class="edit-place">${name}</p>
                     </div>
                     `)
-                   
 
                     modal.classList.add('d-none')
-                    this.initForm()
                 }).catch(function(err) {
                     let msgError = '<div class="error bg-danger">'
                     if(err.bodyText === 'error-category-not-exist') {
@@ -69,23 +77,36 @@ const app = new Vue({
                     }
 
                     form.insertAdjacentHTML('afterbegin', msgError + '</div>')
-                    return
+
                 })
             } else {
-                console.log("edit")
+                let idPlace = form.dataset.id
+                this.$http.post('/place/update/' + idPlace, {
+                    id: idPlace,
+                    name: name,
+                    latitude: latitude,
+                    longitude: longitude,
+                    category: category
+                }).then(function(response) {
+                    document.querySelector('#place-' + idPlace + ' .edit-place').innerText = name
+                    modal.classList.add('d-none')
+                })
+                modal.classList.add('d-none')
             }
 
         },
+
         closeModal: function(event) {
             event.preventDefault()
 
             document.querySelector('.modal')?.classList.add('d-none')
         },
-        handleRemovePlace: function(event) {
-            if(event.target.matches('.remove-place')) {
-                let idCat = event.target.parentNode.getAttribute('id')
 
-                this.$http.get('/place/delete/' + idCat).then((response) => {
+        handlePlace: function(event) {
+            if(event.target.matches('.remove-place')) {
+                let idPlace = event.target.parentNode.dataset.id
+
+                this.$http.get('/place/delete/' + idPlace).then((response) => {
                     if(response.bodyText !== 'ok') {
                         alert('Error lors de la suppression')
                         return false
@@ -93,6 +114,24 @@ const app = new Vue({
 
                     event.target.parentNode.remove()
                 })
+            } else if(event.target.matches('.icon-edit-place')) {
+                let idPlace = event.target.parentNode.dataset.id
+
+                this.$http.get('/place/read/' + idPlace).then(function(response) {
+                    this.place = response.body
+                    let modal = document.querySelector('.modal')
+
+                    let form = modal.querySelector('form')
+
+                    let method = form.querySelector('.method')
+
+                    form.setAttribute('data-id', idPlace)
+
+                    method.setAttribute('value', 'edit')
+                    this.showCategoryModal()
+                })
+
+
             }
 
         }

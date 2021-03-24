@@ -1,5 +1,6 @@
 const express = require("express")
 const bodyParser = require('body-parser')
+const fileUpload  = require('express-fileupload')
 const sqlite3 = require('sqlite3')
 const app = express()
 app.use(express.static('public'));
@@ -13,6 +14,11 @@ db = new sqlite3.Database('data.db');
 
 app.use("/public/assets", express.static(__dirname + "/public/assets"))
 app.use("/public/img", express.static(__dirname + "/public/img"))
+
+app.use(fileUpload({
+    limits: { fileSize: 5 * 1024 * 1024 },
+}));
+
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -68,6 +74,16 @@ app.get('/create-db', (req, res) => {
         (
             id   integer PRIMARY KEY AUTOINCREMENT,
             name varchar
+        );
+    `);
+
+    db.run(`
+        CREATE TABLE IF NOT EXISTS image
+        (
+            id   integer PRIMARY KEY AUTOINCREMENT,
+            name varchar,
+            place_id integer,
+            order_image integer
         );
     `);
 

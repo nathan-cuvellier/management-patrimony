@@ -25,7 +25,8 @@
     <h1 class="text-center">Images pour la place : {{ place.name }}</h1>
 
     <div class="grid images">
-        <div v-for="image of images">
+        <div :data-id="image.id" class="position-relative" v-for="image of images">
+            <i class="remove-category trash las la-2x la-trash cursor-pointer" title="supprimer" @click="removeImage"></i>
             <img :src="'/data/' + image.path" />
         </div>
     </div>

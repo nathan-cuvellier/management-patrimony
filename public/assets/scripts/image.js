@@ -24,6 +24,15 @@ const app = new Vue({
             }).then(function() {
                 //window.location.reload()
             })
+        },
+        removeImage: function(event) {
+            let parentDiv = event.target.parentNode
+            let idImage = parentDiv.dataset.id
+
+
+            this.$http.get('/place/image/delete/' + idImage).then(response => {
+                parentDiv.remove()
+            })
         }
     },
     computed: {},

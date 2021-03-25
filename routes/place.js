@@ -21,7 +21,6 @@ router.post('/add', (req, res) => {
     })
 
     promiseExistCategory.then(exist => {
-        console.log(!exist)
         if(!exist) {
             return res.status(403).send("error-category-not-exist")
         }
@@ -77,11 +76,6 @@ router.post('/update/:id', (req, res) => {
     let longitude = parseFloat(body.longitude)
     let category_id = parseInt(body.category)
 
-    console.log("name : " + body.name)
-    console.log("latitude : " + latitude)
-    console.log("longitude : " + longitude)
-    console.log("category_id : " + category_id)
-    console.log("idPlace : " + idPlace)
     db.run("UPDATE place SET name = ?, latitude = ?,longitude = ? ,category_id = ? WHERE id = ?",
         [body.name, latitude, longitude, category_id, idPlace], function(err) {
                 if (err) {

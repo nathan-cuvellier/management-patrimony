@@ -7,10 +7,11 @@
 
 <div id="app" class="content container">
     <button class="btn cursor-pointer my-5" @click="newCategoryModal"><i class="las la-plus"></i> Ajouter un monument</button>
-    <div class="places" @click="handlePlace">
+    <div class="grid places" @click="handlePlace">
         <div :id="'place-'+place.id" :data-id=place.id class="position-relative place" v-for="place of places">
+            <a :href="'/place/image/' + place.id"><i class="see-images las la-2x la-image cursor-pointer" title="voir les photos"></i></a>
             <i class="icon-edit-place las la-2x la-pen cursor-pointer" title="editer"></i>
-            <i class="remove-place trash-place las la-2x la-trash cursor-pointer" title="supprimer"></i>
+            <i class="remove-place trash las la-2x la-trash cursor-pointer" title="supprimer"></i>
             <p class="edit-place">{{ place.name }}</p>
         </div>
     </div>

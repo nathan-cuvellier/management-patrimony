@@ -107,6 +107,10 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.2;
 }
 
+a {
+  color: inherit;
+}
+
 /**
  * bootstrap@5.0.0
  */
@@ -9380,6 +9384,10 @@ footer {
   display: flex !important;
 }
 
+.d-block {
+  display: block;
+}
+
 .align-items-center {
   align-items: center;
 }
@@ -9463,6 +9471,34 @@ form label {
   margin-bottom: 0.75rem !important;
 }
 
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  justify-items: center;
+  align-items: center;
+  align-content: center;
+  grid-auto-rows: minmax(100px, auto);
+  row-gap: 30px;
+  max-width: 100%;
+}
+.grid > div {
+  width: 250px;
+  max-width: 100%;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  text-align: center;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+.grid .trash {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
 /** Specific */
 img.wave {
   z-index: -1;
@@ -9530,65 +9566,35 @@ img.wave {
   box-shadow: 0 0 40px 0 rgba(0, 0, 0, 0.5);
 }
 
-.categories {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  justify-items: center;
-  align-items: center;
-  align-content: center;
-  grid-auto-rows: minmax(100px, auto);
-  row-gap: 30px;
-  max-width: 100%;
-}
-.categories > div {
-  width: 250px;
-  max-width: 100%;
-  height: 100px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border-radius: 5px;
-  text-align: center;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-}
-.categories .trash-category {
-  position: absolute;
-  top: 0;
-  right: 0;
-}
-
-.places {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  justify-items: center;
-  align-items: center;
-  align-content: center;
-  grid-auto-rows: minmax(100px, auto);
-  row-gap: 30px;
-  max-width: 100%;
-}
-.places > div {
-  width: 250px;
-  max-width: 100%;
-  height: 100px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border-radius: 5px;
-  text-align: center;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-}
-.places .trash-place {
-  position: absolute;
-  top: 0;
-  right: 0;
-}
-.places .icon-edit-place {
+.grid .icon-edit-place {
   position: absolute;
   top: 0;
   right: 32px;
+}
+.grid .see-images {
+  position: absolute;
+  top: 0;
+  right: 64px;
+}
+
+.images.grid {
+  max-width: 100%;
+}
+@media (min-width: 501px) {
+  .images.grid {
+    grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+  }
+}
+.images.grid > div {
+  width: 500px;
+  max-width: 100%;
+  height: 300px;
+}
+.images img {
+  width: 100%;
+  height: 100%;
+  padding: 40px 10px 10px 10px;
+  object-fit: contain;
 }
 
 /*# sourceMappingURL=app.css.map */

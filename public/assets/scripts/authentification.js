@@ -1,0 +1,26 @@
+const app = new Vue({
+    el: "#app",
+    data: {},
+    methods: {},
+    computed: {},
+    mounted: function ()
+    {
+
+        this.$http.get('/layout/head').then(function (response)
+        {
+            document.querySelector('head').insertAdjacentHTML('afterbegin', response.data)
+        })
+
+        this.$http.get('/layout/navbar').then(function (response)
+        {
+            document.body.insertAdjacentHTML('afterbegin', response.data)
+            buildNewBar()
+        })
+
+        this.$http.get('/layout/footer').then(function (response)
+        {
+            document.body.insertAdjacentHTML('beforeend', response.data)
+        })
+
+    }
+})

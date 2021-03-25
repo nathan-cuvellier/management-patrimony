@@ -1,35 +1,12 @@
-.places {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px,1fr));
-    justify-items: center;
-    align-items: center;
-    align-content: center;
-    grid-auto-rows: minmax(100px, auto);
-    row-gap: 30px;
-    max-width: 100%;
-
-    > div {
-        width: 250px;
-        max-width: 100%;
-        height: 100px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        border-radius: $border-radius-size;
-        text-align: center;
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-    }
-
-    .trash-place {
-        position: absolute;
-        top: 0;
-        right: 0;
-    }
-
+.grid {
     .icon-edit-place {
         position: absolute;
         top: 0;
         right: 32px;
+    }
+    .see-images {
+        position: absolute;
+        top: 0;
+        right: 64px;
     }
 }

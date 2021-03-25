@@ -1,23 +1,19 @@
 const express = require("express")
 const bodyParser = require('body-parser')
-const fileUpload  = require('express-fileupload')
 const sqlite3 = require('sqlite3')
 const app = express()
-app.use(express.static('public'));
-let layoutRouter = require('./routes/layout');
-let homeRouter = require('./routes/home');
-let authentificationRouter = require('./routes/authentification');
-let categoryRouter = require('./routes/category');
-let placeRouter = require('./routes/place');
+app.use(express.static('public'))
+let layoutRouter = require('./routes/layout')
+let homeRouter = require('./routes/home')
+let authentificationRouter = require('./routes/authentification')
+let categoryRouter = require('./routes/category')
+let placeRouter = require('./routes/place')
+let imageRouter = require('./routes/image')
 
 db = new sqlite3.Database('data.db');
 
 app.use("/public/assets", express.static(__dirname + "/public/assets"))
 app.use("/public/img", express.static(__dirname + "/public/img"))
-
-app.use(fileUpload({
-    limits: { fileSize: 5 * 1024 * 1024 },
-}));
 
 
 // parse application/x-www-form-urlencoded
@@ -52,6 +48,7 @@ app.use('/category', categoryRouter)
 /*********************************/
 
 app.use('/place', placeRouter)
+app.use('/place/image', imageRouter)
 
 
 app.get('/create-db', (req, res) => {
@@ -81,9 +78,8 @@ app.get('/create-db', (req, res) => {
         CREATE TABLE IF NOT EXISTS image
         (
             id   integer PRIMARY KEY AUTOINCREMENT,
-            name varchar,
-            place_id integer,
-            order_image integer
+            path varchar,
+            place_id integer
         );
     `);
 

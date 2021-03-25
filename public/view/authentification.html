@@ -10,21 +10,7 @@
     <script src="/public/assets/scripts/dist.js" defer></script>
 </head>
 <body>
-<div class="menu-burger">
-    <div class="line1"></div>
-    <div class="line2"></div>
-    <div class="line3"></div>
-</div>
-<nav>
-    <ul class="nav-links">
-        <li><a href=""><i class="lar la-2x la-user"></i>Se connecter</a></li>
-        <li><a href=""><i class="las la-2x la-church"></i>Gestion de patrimoines</a></li>
-        <!--        <li><a href=""><i class="las la-2x la-route"></i>Gestion d'itineraires</a></li>-->
-        <li><a href="">A propos</a></li>
-        <li><a href="">Mentions légals</a></li>
-    </ul>
-</nav>
-<div class="content">
+<div class="content" id="app">
     <img class="wave" src="/img/wave.svg"/>
 
     <div class="auth animate animateSlideInDown mx-1">
@@ -52,12 +38,12 @@
                 <input class="btn cursor-pointer" type="submit" value="Se connecter">
             </div>
         </form>
-
     </div>
-
 </div>
-<footer>
-    <p>Management patrimony &copy; 2021</p>
-</footer>
+
+<script src="/public/assets/scripts/dist.js"></script>
+<script src="/assets/scripts/vue.js"></script>
+<script src="/assets/scripts/vue-resource.js"></script>
+<script src="/assets/scripts/authentification.js"></script>
 </body>
 </html>

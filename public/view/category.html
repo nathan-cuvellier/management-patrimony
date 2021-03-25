@@ -7,9 +7,9 @@
 
 <div id="app" class="content container">
     <button class="btn cursor-pointer my-5" @click="addCategory"><i class="las la-plus"></i> Ajouter une catégorie</button>
-    <div class="categories" @click="handleRemoveCategory" v-on:keyup="editCategory">
+    <div class="grid categories" @click="handleRemoveCategory" v-on:keyup="editCategory">
         <div :id=category.id class="position-relative category" v-for="category of categories">
-            <i class="remove-category trash-category las la-2x la-trash cursor-pointer" title="supprimer"></i>
+            <i class="remove-category trash las la-2x la-trash cursor-pointer" title="supprimer"></i>
             <p class="edit-category" contenteditable="true">{{ category.name }}</p>
         </div>
     </div>

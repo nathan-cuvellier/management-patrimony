@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <title>Gestion du patrimoine</title>
+</head>
+<body>
+<h2 class="text-center">Ajouter des images ci-dessous</h2>
+<div class="container mt-3">
+    <form action="/place/image/add" method="post" encType="multipart/form-data">
+        <input
+                id="input-images"
+                type="file"
+                name="images"
+                multiple
+                label="Déposez les fichiers ici ou cliquez. (format jpeg/jpg/png max 5Mo)"
+                help="Téléchargez les fichiers ici et ils ne seront pas envoyés immédiatement"
+                is="drop-files"
+        />
+        <button class="btn cursor-pointer mt-2 mx-auto d-block">Envoyer</button>
+    </form>
+
+
+</div>
+<div id="app" class="content container">
+    <h1 class="text-center">Images pour la place : {{ place.name }}</h1>
+
+    <div class="grid images">
+        <div v-for="image of images">
+            <img :src="'/data/' + image.path" />
+        </div>
+    </div>
+
+</div>
+
+<script type="module" src="/public/assets/scripts/drop-files-element.js"></script>
+<script src="/public/assets/scripts/dist.js"></script>
+<script src="/assets/scripts/vue.js"></script>
+<script src="/assets/scripts/vue-resource.js"></script>
+<script src="/assets/scripts/image.js"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        let urlSplit = window.location.pathname.split('/')
+        let idPlace = urlSplit[urlSplit.length-1]
+
+        document.querySelector('form').insertAdjacentHTML('afterbegin', '<input type="hidden" id="place_id" name="place_id" value="' + idPlace + '"/>')
+    })
+</script>
+</body>
+</html>

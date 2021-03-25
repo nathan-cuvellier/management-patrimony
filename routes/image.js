@@ -94,7 +94,7 @@ router.get('/list/:id', (req, res) => {
     let id = req.params.id
     if(isNaN(id)) return res.json('error id is not a integer')
 
-    db.all("SELECT * FROM image WHERE place_id = ?", id, function(err, allRows) {
+    db.all("SELECT * FROM image WHERE place_id = ? ORDER BY id DESC", id, function(err, allRows) {
         if(err) return console.log(err.message)
 
         res.json(allRows);

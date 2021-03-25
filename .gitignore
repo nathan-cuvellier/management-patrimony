@@ -1,6 +1,5 @@
 .idea/
 data.db
-public/data/*
 ### Node ###
 # Logs
 logs

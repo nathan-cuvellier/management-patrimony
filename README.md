@@ -25,6 +25,20 @@ Création des données pour SQLite
 
 # Screenshots
 
+### home
+
+![Catégorie](https://nathan-cuvellier.fr/img/js_damas/m_home.png)
+
+![Catégorie](https://nathan-cuvellier.fr/img/js_damas/home.png)
+
+
+### login
+
+![Catégorie](https://nathan-cuvellier.fr/img/js_damas/m_login.png)
+
+![Catégorie](https://nathan-cuvellier.fr/img/js_damas/login.png)
+
+
 ### Catégories
 
 ![Catégorie](https://nathan-cuvellier.fr/img/js_damas/category.png)
@@ -36,3 +50,13 @@ Création des données pour SQLite
 ### Gestion des erreurs
 
 ![Erreur exemple](https://nathan-cuvellier.fr/img/js_damas/error_foreign_key.png)
+
+### image
+
+![Image](https://nathan-cuvellier.fr/img/js_damas/m_images.png)
+
+![Image](https://nathan-cuvellier.fr/img/js_damas/images.png)
+
+![Image demo](https://nathan-cuvellier.fr/img/js_damas/image_demo.gif)
+
+

@@ -32,6 +32,10 @@ router.post('/add', (req, res) => {
 
         let images = req.files.images
 
+        /*
+         * if a client upload a single file, the data is an object and not an array
+         * Need an array in order to use forEach function
+         */
         images = !(req.files.images instanceof Array) ?  [images] : images
 
         images.forEach(image => {

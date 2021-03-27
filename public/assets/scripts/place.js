@@ -61,14 +61,16 @@ const app = new Vue({
                 }).then(function(response) {
                     document.querySelector('.places').insertAdjacentHTML('afterbegin', `
                     <div id="${response.bodyText}" data-id="${response.bodyText}" class="position-relative place">
+                        <a href="/place/image/${response.bodyText}"><i class="see-images las la-2x la-image cursor-pointer" title="voir les photos"></i></a>
                         <i class="icon-edit-place las la-2x la-pen cursor-pointer" title="editer"></i>
-                        <i title="supprimer" class="remove-place trash-place las la-2x la-trash cursor-pointer"></i>
+                        <i title="supprimer" class="remove-place trash las la-2x la-trash cursor-pointer"></i>
                         <p class="edit-place">${name}</p>
                     </div>
                     `)
 
                     modal.classList.add('d-none')
                 }).catch(function(err) {
+                    console.log(err)
                     let msgError = '<div class="error bg-danger">'
                     if(err.bodyText === 'error-category-not-exist') {
                         msgError += 'Erreur, la catégorie n\'a pas été trouvé';

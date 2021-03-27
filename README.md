@@ -28,14 +28,14 @@ internet explorer | :x: <br />(c'est volontaire, je ne voulais pas le prendre en
 
 ## Getting started
 
-Install npm dependencies
+Installation des dépendances npm
 ```sh
 $ npm install
 ```
 
 Creation des tables pour le SQLite
 
-Table Name | Description
+Nom des tables | Description
 --- | ---
 Category | catégorie des places (ex : Prison, Église, ...)
 Place | Monument (ex : Place du château, Pont des amours, ...)

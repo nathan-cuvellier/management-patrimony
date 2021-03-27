@@ -73,7 +73,7 @@ const app = new Vue({
                     console.log(err)
                     let msgError = '<div class="error bg-danger">'
                     if(err.bodyText === 'error-category-not-exist') {
-                        msgError += 'Erreur, la catégorie n\'a pas été trouvé';
+                        msgError += 'Erreur, la catégorie n\'a pas été trouvée';
                     } else {
                         msgError += 'Erreur non identifiée'
                     }

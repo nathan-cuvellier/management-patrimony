@@ -1,18 +1,29 @@
 # Management patrimony
 
+**+1 pour ce beau README pls :smiley:**
+
 Le but de ce site est de permettre aux offices de tourismes de pouvoir gérer des monuments qui seront visibles sur une application mobile
 
 *Le site final sera fait en symfony, vous retrouverez une petite partie du développement en NodeJS*
 
 Le site a été pensé en **MOBILE FIRST**
 
+## :warning: Important
+
+- Les liens "A propos" et "Mentions légales" servent de décoration :eyes:
+- De même pour la partie connexion, elle n'a pas été implémenté
+- Exécuté sur nodejs V14.16.0 LTS
+- Des tests ont été realisé sur les clefs étrangères (cf. [Gestion des erreurs](#gestion-des-erreurs)), mais pour pas passer mon temps là-dessus, je n'ai pas fait l'entièreté de ce qui devrait être fait pour un vrai serveur en prod...
+
+---
+
 Navigateur web | Compatibilité | version testée
 --- | --- | ---
 chromium (brave, chrome, edge, ...) | :heavy_check_mark: | 89
-Firefore | :heavy_check_mark: | 87
+Firefox | :heavy_check_mark: | 87
 Opera | :heavy_check_mark: | 75
 Safari | :grey_question: | x
-internet explorer | :x: (c'est volontaire, je ne voulais pas le prendre en compte, même si j'aurai pu utiliser babeljs + autoprefixer css) | 11
+internet explorer | :x: <br />(c'est volontaire, je ne voulais pas le prendre en compte,<br />même si j'aurai pu utiliser babeljs + autoprefixer css) | 11
   
 
 ## Getting started

@@ -6,24 +6,34 @@ Le but de ce site est de permettre aux offices de tourismes de pouvoir gérer de
 
 Le site a été pensé en **MOBILE FIRST**
 
+Navigateur web | Compatibilité | version testée
+--- | --- | ---
+chromium (brave, chrome, edge, ...) | :heavy_check_mark: | 89
+Firefore | :heavy_check_mark: | 87
+Opera | :heavy_check_mark: | 75
+Safari | :grey_question: | x
+internet explorer | :x: (c'est volontaire, je ne voulais pas le prendre en compte, même si j'aurai pu utiliser babeljs + autoprefixer css) | 11
+  
+
 ## Getting started
 
 Install npm dependencies
 ```sh
-npm install
+$ npm install
 ```
 
 Creation des tables pour le SQLite
-```text
-/create-db
-```
-SQL Name | Description
+
+Table Name | Description
 --- | ---
 Category | catégorie des places (ex : Prison, Église, ...)
 Place | Monument (ex : Place du château, Pont des amours, ...)
-Image | Image des places  (monuments) 
+Image | Image des places  (monuments)
 User | utilisateur (office de tourisme)
 
+```text
+/create-db
+```
 
 Création des données pour SQLite
 ```text
@@ -67,6 +77,7 @@ Création des données pour SQLite
 ### Gestion des erreurs
 
 ![Erreur exemple](https://nathan-cuvellier.fr/img/js_damas/error_foreign_key.png)
+![Erreur exemple](https://nathan-cuvellier.fr/img/js_damas/error_foreign_key_place_category.png)
 
 ### image
 

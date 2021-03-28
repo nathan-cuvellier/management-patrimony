@@ -146,7 +146,7 @@ const app = new Vue({
             this.places = response.data
         })
 
-        this.$http.get('/categories-list').then(function (response)
+        this.$http.get('/category/list').then(function (response)
         {
             this.categories = response.data
         })

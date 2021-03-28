@@ -64,7 +64,7 @@ const app = new Vue({
     computed: {},
     mounted: function ()
     {
-        this.$http.get('/categories-list').then(function (response)
+        this.$http.get('/category/list').then(function (response)
         {
             this.categories = response.data
         })

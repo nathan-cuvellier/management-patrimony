@@ -57,4 +57,16 @@ router.post('/update/:id', (req, res) => {
     res.send("ok")
 })
 
+router.get('/list', (req, res) => {
+
+    db.all('SELECT * FROM `category` ORDER BY id DESC;', function(err, allRows) {
+        if(err != null){
+            console.log(err);
+        }
+
+        res.json(allRows);
+    })
+
+})
+
 module.exports = router;

@@ -47,8 +47,27 @@ User | utilisateur (office de tourisme)
 ```
 
 Création des données pour SQLite
+
 ```text
 /data-test
+```
+
+:warning: Normalement, après avoir était sur /data-test, il devrait y avoir 8 catégories et 2 places, mais pour une raison inconnue, ca ne fonctionne pas tout le temps, il est parfois nécessaire de relancer la page.
+
+```js
+    db.run('INSERT INTO category (name) VALUES (\'Pont\');')
+    db.run('INSERT INTO category (name) VALUES (\'Lac\');')
+    db.run('INSERT INTO category (name) VALUES (\'Magasin\');')
+    db.run('INSERT INTO category (name) VALUES (\'Marché\');')
+    db.run('INSERT INTO category (name) VALUES (\'Église\');')
+    db.run('INSERT INTO category (name) VALUES (\'Prison\');')
+    db.run('INSERT INTO category (name) VALUES (\'Fontaine\');')
+    db.run('INSERT INTO category (name) VALUES (\'Rivière\');')
+
+    db.get('SELECT * FROM category', [], (err,row) => {
+        db.run("INSERT INTO place (name, latitude, longitude, category_id) VALUES('Pont des amours', 6.131370, 45.900227," + row.id + ")")
+        db.run("INSERT INTO place (name, latitude, longitude, category_id) VALUES('Test', 6.131370, 45.900227," + row.id + ")")
+    })
 ```
 
 # Screenshots

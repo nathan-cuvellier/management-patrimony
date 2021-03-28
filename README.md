@@ -24,6 +24,23 @@ Firefox | :heavy_check_mark: | 87
 Opera | :heavy_check_mark: | 75
 Safari | :grey_question: | x
 internet explorer | :x: <br />(c'est volontaire, je ne voulais pas le prendre en compte,<br />même si j'aurai pu utiliser babeljs + autoprefixer css) | 11
+
+## Script
+
+Au besoin, vous pouvez recompiler le css et le js
+```sh
+$ npm install -g sass
+```
+```json
+  {
+      "scripts": {
+        "build-style": "sass assets/styles/app.scss public/assets/styles/app.css",
+        "build-style-watch": "sass assets/styles/app.scss public/assets/styles/app.css --watch",
+        "build-script": "uglifyjs assets/scripts/* -o public/assets/scripts/dist.js",
+        "prod": "uglifyjs assets/scripts/* --compress -m -o public/assets/scripts/dist.js && sass assets/styles/app.scss public/assets/styles/app.css"
+      }
+  }
+```
   
 
 ## Getting started
@@ -44,7 +61,7 @@ User | utilisateur (office de tourisme)
  
 <br />
 
-:warning: Normalement, après avoir était sur `/create-db`, il devrait y avoir 4 tables, le script ne les créées pas systématiquement pour une raison inconnue, ca ne fonctionne pas tout le temps <br />
+:warning: Normalement, après avoir était sur `/create-db`, il devrait y avoir 4 tables, le script ne les créées pas systématiquement pour une raison inconnue, ca ne fonctionne pas tout le temps. Je vous conseille donc d'actualiser la page plusieurs fois, dans le doute...<br />
 De même pour `/data-test` il devrait y avoir 8 catégories et 2 places, mais il est parfois nécessaire de réactualiser la page.
 
 ```text

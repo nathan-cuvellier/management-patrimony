@@ -39,7 +39,6 @@ router.post('/add', (req, res) => {
         images = !(req.files.images instanceof Array) ?  [images] : images
 
         images.forEach(image => {
-            console.log(image)
             let split = image.name.split('.')
             ext = split[split.length - 1]
 

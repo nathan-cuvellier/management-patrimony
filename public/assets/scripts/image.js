@@ -6,16 +6,11 @@ const app = new Vue({
     },
     methods: {
         sendFiles: function() {
-            console.log(document.querySelector('#input-images'))
             let data = new FormData();
             let inputFiles = document.querySelector('#input-images')
 
             for(const file of inputFiles.files) {
                 data.append('files[]', file)
-            }
-
-            for (var value of data.values()) {
-                console.log(value);
             }
 
             this.$http.post('/place/image/add', {
